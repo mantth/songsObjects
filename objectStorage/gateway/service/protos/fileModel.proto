@@ -1,0 +1,10 @@
+syntax="proto3";
+package service;
+option go_package="./;protos";
+
+message FileModel{
+  string FileName=1;
+  string HashCode=2;
+  uint64 FileSize=3;
+  string Content=4;
+}

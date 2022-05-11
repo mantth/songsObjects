@@ -1,0 +1,25 @@
+syntax="proto3";
+package service;
+import "fileModel.proto";
+option go_package="./;protos";
+
+message FileRequest{
+  string FileName=1;
+  string HashCode=2;
+  uint32 ShardID=3;
+}
+
+message FileResponse{
+  FileModel File=1;
+  uint32 Code=2;
+}
+
+message FileBinary{
+  FileModel File=1;
+  bytes Data=2;
+}
+service FileService{
+  rpc FileUpload(FileBinary) returns(FileResponse);
+  rpc FileDownload(FileRequest) returns(stream FileBinary);
+  rpc FileExist(FileRequest) returns(FileResponse);
+}

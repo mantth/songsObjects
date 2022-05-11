@@ -1,0 +1,10 @@
+syntax="proto3";
+package service;
+option go_package ="./;protos";
+
+message MetaData{
+  string Name=1;
+  uint64 Length=2;
+  string Hash=3;
+  int32 Version=4;
+}

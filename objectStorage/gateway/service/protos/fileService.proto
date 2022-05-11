@@ -1,0 +1,20 @@
+syntax="proto3";
+package service;
+import "fileModel.proto";
+option go_package="./;protos";
+
+message FileRequest{
+  string FileName=1;
+  string HashCode=2;
+  uint64 FileSize=3;
+  string Content=4;
+}
+
+message FileResponse{
+  FileModel File=1;
+  uint32 Code=2;
+}
+service FileService{
+  rpc FileUpload(FileRequest) returns(FileResponse);
+  rpc FileDownload(FileRequest) returns(FileResponse);
+}

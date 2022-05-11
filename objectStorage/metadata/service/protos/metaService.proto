@@ -1,0 +1,22 @@
+syntax="proto3";
+package service;
+import "metaModel.proto";
+option go_package = "./;protos";
+
+message MetaRequest{
+  string Name=1;
+  uint64 Length=2;
+  string Hash=3;
+  int32 Version=4;
+}
+
+message MetaResponse{
+  repeated MetaData Meta=1;
+}
+
+service MetaService{
+  rpc GetVersion(MetaRequest) returns(MetaResponse);
+  rpc DelVersion(MetaRequest) returns(MetaResponse);
+  rpc PutVersion(MetaRequest) returns(MetaResponse);
+  rpc GetLatestVersion(MetaRequest) returns(MetaResponse);
+}
